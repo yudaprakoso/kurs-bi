@@ -28,6 +28,12 @@ def scrape_via_worker(headless: bool):
         command = [sys.executable, str(BASE_DIR / "scraper_worker.py"),
                    "--output", str(result_file),
                    "--headless", "true" if headless else "false"]
+        if sys.platform.startswith('linux') and not headless:
+            command = [
+                'xvfb-run',
+                '-a',
+                '--server-args=-screen 0 1440x900x24',
+            ] + command
         proc = subprocess.run(
             command, cwd=str(BASE_DIR), capture_output=True, text=True,
             timeout=180, check=False
