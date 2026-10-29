@@ -1,0 +1,7 @@
+streamlit>=1.37
+playwright>=1.45
+pandas>=2.2
+plotly>=5.22
+python-dotenv>=1.0
+xlsxwriter>=3.2
+openpyxl>=3.1
