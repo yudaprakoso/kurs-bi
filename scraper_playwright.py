@@ -1,12 +1,15 @@
 """Scraper tabel Kurs Transaksi BI. Menjalankan browser lokal; tidak memakai SOAP API."""
 import os
 import re
+import subprocess
+import sys
+import time
 from datetime import date, datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 from dotenv import load_dotenv
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import (Error as PlaywrightError,sync_playwright,)
 
 load_dotenv()
 BI_URL = os.getenv("BI_URL", "https://www.bi.go.id/id/statistik/informasi-kurs/transaksi-bi/default.aspx")
